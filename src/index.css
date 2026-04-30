@@ -4,3 +4,30 @@ body{
    background-color: rgba(0, 0, 0, 0.788);
    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
+
+header nav a{
+  margin-left: 30px;
+  position: relative;
+  text-decoration: none;
+  background-image: linear-gradient(to right, rgb(167, 166, 166), rgb(167, 166, 166));
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 2px;
+  transition: background-size 0.4s ease-in-out,color 0.2s ease;
+}
+
+header nav a:not(.active):hover{
+   color:rgb(167, 166, 166);
+   background-size: 100% 2px;
+}
+
+header nav a.active{
+   color: rgb(167, 166, 166);
+   text-decoration: underline;
+}
+
+@layer{
+   .user-container{
+      @apply absolute top-0 text-[18px] ml-5 -mt-2.5 p-0.5 h-7 text-center w-5 rounded-full 
+   }
+}
