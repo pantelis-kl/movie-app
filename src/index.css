@@ -34,6 +34,10 @@ header nav a.active{
    --animate-slideDown:slideDown 1s ease-out
 }
 
+@theme{
+   --animate-type:type 3s ease-in-out
+}
+
 @layer{
    .user-container{
       @apply absolute top-0 text-[18px] ml-5 -mt-2.5 p-0.5 h-7 text-center w-5 rounded-full 
@@ -43,4 +47,9 @@ header nav a.active{
 @keyframes slideDown{
    from{height:0}
    to{height: 150px;}
+}
+
+@keyframes type{
+   from{width: 0ch;}
+   to{width: 35ch;}
 }
