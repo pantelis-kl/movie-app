@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 body{
-   background-color: rgba(0, 0, 0, 0.788);
+   background-color: #000000c9;
    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
@@ -17,7 +17,7 @@ header nav a{
 }
 
 header nav a:not(.active):hover{
-   color:rgb(167, 166, 166);
+   color:#a7a6a6;
    background-size: 100% 2px;
 }
 
@@ -26,8 +26,21 @@ header nav a.active{
    text-decoration: underline;
 }
 
+.hide-bars{
+   display: none;
+}
+
+@theme{
+   --animate-slideDown:slideDown 1s ease-out
+}
+
 @layer{
    .user-container{
       @apply absolute top-0 text-[18px] ml-5 -mt-2.5 p-0.5 h-7 text-center w-5 rounded-full 
    }
+}
+
+@keyframes slideDown{
+   from{height:0}
+   to{height: 150px;}
 }
