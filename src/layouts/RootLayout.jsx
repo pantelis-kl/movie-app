@@ -9,13 +9,13 @@ import { Outlet } from 'react-router-dom'
 
 export default function RootLayout(){
     return(<>
-        <header className="bg-[#161616] w-full flex flex-row sticky">
+        <header className="bg-[#161616] w-full flex flex-row top-0 z-50 sticky">
             <div className='flex flex-col w-30 items-start justify-start
              lg:items-center lg:justify-center'>
                 <h2 className='text-[white] text-[18px] font-extrabold
-                 lg:text-[23px]'>Based On</h2>
+                sm:text-[20px]  lg:text-[23px]'>Based On</h2>
                 <img src={tmdbLogo} alt='TMDB logo' className='w-18 -mt-2
-                 lg:w-25 lg:-mt-5'/>
+                 md:w-20 lg:w-25 lg:-mt-5'/>
             </div>
             <NavBar/>
         </header>
