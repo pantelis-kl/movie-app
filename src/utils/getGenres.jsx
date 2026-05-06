@@ -1,8 +1,15 @@
 //import api key
 import { apiKey } from "../constants/constants";
-//import hooks
-import useFetch from "../hooks/useFetch";
-export default function getGenres(movieId){
-    const [data,loading]=useFetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}`);
-    return!loading?data.genres:''
+
+export default function getGenres(genreId,genresData){
+    if (!genresData || !genresData.genres) return [];
+        const genreLength=genresData.genres.length;
+        let genresArr=[]
+        for(let i=0;i<genreId.length;i++){
+            for(let j=0;j<genreLength;j++){
+                if(genreId[i]===genresData.genres[j].id)
+                    genresArr.push(genresData.genres[j].name)
+            }
+        }
+    return genresArr;
 }
