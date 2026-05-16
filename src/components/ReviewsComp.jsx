@@ -10,9 +10,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 //import functions
-import getStars from '../utils/getStars.jsx'
+import getStars from '../utils/getStars.jsx';
 
-export default function ReviewsComp({id}){
+//import loading skeleton
+import Skeleton,{SkeletonTheme} from "react-loading-skeleton";
+
+export default function ReviewsComp({id,loading}){
     const [data]=useFetch(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${apiKey}`);
     const [lowerEnd,setLowerEnd]=useState(0);
     const [upperEnd,setUpperEnd]=useState(2);
@@ -34,6 +37,46 @@ export default function ReviewsComp({id}){
     }
 
     return(
+        <>
+        {loading?
+        <div className="flex flex-col items-center justify-center gap-y-2 mt-7 mb-6">
+            <SkeletonTheme baseColor="#333" highlightColor="#444">
+                <div className="flex items-center gap-5">
+            <span className="px-4 w-40 text-3xl lg:w-40 lg:px-3 py-1 lg:py-2 rounded-full lg:text-2xl">
+                <Skeleton/>
+            </span>
+            <h2 className="text-xl w-20 lg:w-40 lg:text-2xl">
+                <Skeleton/>
+            </h2>
+            </div>
+            <div className="flex flex-col gap-y-5">
+                {Array.from({length:2}).map((_,index)=>
+                   <div className="flex flex-col items-start p-5 gap-4 rounded-2xl bg-zinc-950/20 backdrop-blur-xl border border-white/10 relative overflow-hidden" key={index}>
+                    <div className="flex flex-row items-center lg:justify-center gap-x-3">
+                        <span className="w-15 text-5xl lg:w-20 lg:text-6xl">
+                            <Skeleton circle/>
+                        </span>
+                        <div className="flex flex-col gap-y-2">
+                    <h4 className=" w-30 lg:text-2xl">
+                        <Skeleton/>
+                    </h4>
+                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-900/40 backdrop-blur-md border border-white/5 shadow-inner select-none">
+                            <h5 className="w-20 text-2xl">
+                                <Skeleton/>
+                            </h5>
+                        </div>
+                    </div>
+                    </div>
+                    <p className="w-40 sm:w-120 lg:w-200 text-xl">
+                     <Skeleton count={4}/>
+                  </p>
+                  <h4 className="text-[17px] lg:text-[20px] w-20"><Skeleton/></h4>
+                </div>
+                )}
+            </div>
+            </SkeletonTheme>
+        </div>
+        :
         <div className="flex flex-col items-center justify-center gap-y-2 mt-7 mb-6">
   {data && (
             <div className="flex items-center gap-5">
@@ -117,5 +160,6 @@ export default function ReviewsComp({id}){
         </div>
         
         </div>
+    }</>
     )
 }
